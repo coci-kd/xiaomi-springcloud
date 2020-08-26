@@ -1,0 +1,37 @@
+
+server:
+  port: 8769
+
+spring:
+  application:
+    name: xiaomi-zuul
+
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+zuul:
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+  routes:
+    #消费者的名字自定义
+    xiaomi-feign:
+      path: /api-a/**
+      serviceId: xiaomi-feign
+
+    #可以配置多个路由请求转发
+    #tb-config-client:
+      #path: /api-b/**
+      #serviceId: tb-config-client
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000
