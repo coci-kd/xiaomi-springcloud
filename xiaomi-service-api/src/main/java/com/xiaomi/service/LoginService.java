@@ -14,4 +14,8 @@ public interface LoginService {
 
     @RequestMapping("/findUserInfoByAccount")
     UserBean findUserInfoByAccount(@RequestParam String account);
+
+    Map sendSms(String phone) throws Exception;
+
+    Map sendMsg(String phone, String checkCode);
 }

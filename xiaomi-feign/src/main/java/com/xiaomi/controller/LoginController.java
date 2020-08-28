@@ -51,4 +51,37 @@ public class LoginController {
         result.put("msg", "登录成功");
         return result;
         }
+
+    //toKjlogin
+    @RequestMapping("/toKjlogin")
+    public String toKjlogin(){
+        return "kjlogin";
+    }
+
+    /**
+     *@Description  发送验证码
+     *@Author   kd
+     *@Date  2020/08/28 19:48
+     *Exception
+     *
+     */
+    //sendSms
+    @RequestMapping("sendSms")
+    public Map sendSms(String phone) throws Exception{
+        return loginServiceFeign.sendSms(phone);
+    }
+
+    //sendMsg
+    /**
+     *@Description   登录
+     *@Author   kd
+     *@Date  2020/08/28 20:10
+     *Exception
+     *
+     */
+    @RequestMapping("sendMsg")
+    public Map sendMsg(String phone,String checkCode){
+        return loginServiceFeign.sendMsg(phone,checkCode);
+    }
+
 }

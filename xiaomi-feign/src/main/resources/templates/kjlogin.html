@@ -184,26 +184,12 @@
             <!-- Unnamed (Text Field) -->
             <div id="u23" class="ax_default text_field">
                 <div id="u23_div"></div>
-                <input id="u23_input" name="account" type="text" value="" class="u23_input" placeholder="用户名/手机号"/>
+                <input id="u23_input" name="phone" type="text" value="" class="u23_input" placeholder="手机号"/>
 
             </div>
 
 
-            <!-- &lt;!&ndash; Unnamed (Shape) &ndash;&gt;
-            <div id="u24" class="ax_default _形状1 disabled">
-                 <img id="u24_img" class="img " src="../js/images/u24.svg"/>
-                 <div id="u24_text" class="text " style="display:none; visibility: hidden">
-                     <p></p>
-                 </div>
-             </div>-->
-
-            <!-- Unnamed (Rectangle) -->
-            <!--<div id="u25" class="ax_default paragraph disabled">
-                 &lt;!&ndash;<div id="u25_div" class="disabled"></div>
-                 &lt;!&ndash;<div id="u25_text" class="text ">-->
-            <input type="text" placeholder="用户名/手机号">
-            <!--    </div>&ndash;&gt;&ndash;&gt;
-            </div>-->
+            <input type="text" placeholder="手机号">
         </div>
 
         <!-- Unnamed (Group) -->
@@ -212,25 +198,9 @@
             <!-- Unnamed (Text Field) -->
             <div id="u27" class="ax_default text_field">
                 <div id="u27_div"></div>
-                <input id="u27_input" name="password" type="password" value="" class="u27_input" placeholder="请输入密码"/>
-
+                <input id="u27_input" name="checkCode" type="text" value="" class="u27_input" placeholder="请输入验证码"/>
+                <button onclick="sendSms()" type="button" class="btn btn-primary btn-block glyphicon glyphicon-plus">发送验证码</button>
             </div>
-
-            <!-- Unnamed (Shape) -->
-            <!--  <div id="u28" class="ax_default _形状1 disabled">
-                    <img id="u28_img" class="img " src="../js/images/u28.svg"/>
-                    <div id="u28_text" class="text " style="display:none; visibility: hidden">
-                        <p></p>
-                    </div>
-                </div>
-    -->
-            <!-- Unnamed (Rectangle) -->
-            <!--<div id="u29" class="ax_default paragraph disabled">
-                <div id="u29_div" class="disabled"></div>
-                <div id="u29_text" class="text ">-->
-
-            <!--  </div>
-          </div>-->
         </div>
 
     </form>
@@ -240,8 +210,7 @@
         <div id="u30_div" class=""></div>
         <div id="u30_text" class="text ">
             <p>
-                <button onclick="login()" type="button" class="btn btn-primary btn-block glyphicon glyphicon-plus">立即登录</button>
-                <button onclick="kjlogin()" type="button" class="btn btn-primary btn-block glyphicon glyphicon-plus">手机验证码登录</button>
+                <button onclick="sendMsg()" type="button" class="btn btn-primary btn-block glyphicon glyphicon-plus">手机验证码登录</button>
             </p>
         </div>
     </div>
@@ -353,9 +322,15 @@
 <script src="../js/resources/scripts/axure/ios.js"></script>
 </body>
 <script>
-    function login(){
+    function sendSms() {
+        var phone = $("#phone").val();
+        $.post('../login/sendSms',{phone:phone },function(data){
+            alert(data.msg);
+        });
+    }
+    function sendMsg(){
         $.ajax({
-            url:'../login/login',
+            url:'../login/sendMsg',
             type:'post',
             data:$("#loginForm").serialize(),
             dataType:"json",
@@ -368,9 +343,6 @@
                 }
             }
         })
-    }
-    function kjlogin() {
-        location.href = "../login/toKjlogin"
     }
 </script>
 </html>
