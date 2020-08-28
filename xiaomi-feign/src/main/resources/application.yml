@@ -3,6 +3,9 @@ server:
   port: 8080
 
 spring:
+  #允许存在多个Feign调用相同Service的接口
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: xiaomi-feign
   redis:

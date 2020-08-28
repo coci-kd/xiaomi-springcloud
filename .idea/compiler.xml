@@ -10,11 +10,11 @@
         <module name="xiaomi-config-server" />
         <module name="xiaomi-provider" />
         <module name="xiaomi-feign" />
-        <module name="xiaomi-eureka" />
+        <module name="xiaomi-config-client" />
         <module name="xiaomi-common" />
         <module name="xiaomi-service-api" />
         <module name="xiaomi-zuul" />
-        <module name="xiaomi-config-client" />
+        <module name="xiaomi-eureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8" />
