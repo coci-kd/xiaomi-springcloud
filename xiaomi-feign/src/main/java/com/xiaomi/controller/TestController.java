@@ -28,6 +28,7 @@ public class TestController {
     @ResponseBody
     public List<Test> test(){
         List<Test> test = testServiceFeign.test();
+        System.out.print("老男人在线教学！");
         return  test;
     }
 
